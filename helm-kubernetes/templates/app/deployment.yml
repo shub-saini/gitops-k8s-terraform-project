@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gitopsprojectapp
-          image: gitopsprojectfile/gitopsprojectfileapp
+          image: { { .Values.appimage } }:{{ .Values.apptag }}
           ports:
             - name: gitopsprojectapp-port
               containerPort: 8080
