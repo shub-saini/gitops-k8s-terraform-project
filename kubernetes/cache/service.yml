@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitopsprojectcache01
+spec:
+  ports:
+    - port: 11211
+      targetPort: gitopsprojectmc-port
+      protocol: TCP
+  selector:
+    app: gitopsprojectmc
+  type: ClusterIP

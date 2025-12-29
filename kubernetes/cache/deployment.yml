@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitopsprojectmc
+  labels:
+    app: gitopsprojectmc
+spec:
+  selector:
+    matchLabels:
+      app: gitopsprojectmc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gitopsprojectmc
+    spec:
+      containers:
+        - name: gitopsprojectmc
+          image: memcached
+          ports:
+            - name: gitopsprojectmc-port
+              containerPort: 11211

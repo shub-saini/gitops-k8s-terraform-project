@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitopsprojectdb
+spec:
+  ports:
+    - port: 3306
+      targetPort: gitopsprojectdb-port
+      protocol: TCP
+  selector:
+    app: gitopsprojectdb
+  type: ClusterIP

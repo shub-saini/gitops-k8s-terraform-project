@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitopsprojectapp
+  labels:
+    app: gitopsprojectapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitopsprojectapp
+  template:
+    metadata:
+      labels:
+        app: gitopsprojectapp
+    spec:
+      containers:
+        - name: gitopsprojectapp
+          image: gitopsprojectfile/gitopsprojectfileapp
+          ports:
+            - name: gitopsprojectapp-port
+              containerPort: 8080
+      initContainers:
+        - name: init-mydb
+          image: busybox
+          command:
+            [
+              'sh',
+              '-c',
+              'until nslookup gitopsprojectdb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done;',
+            ]
+        - name: init-memcache
+          image: busybox
+          command:
+            [
+              'sh',
+              '-c',
+              'until nslookup gitopsprojectcache01.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mydb; sleep 2; done;',
+            ]

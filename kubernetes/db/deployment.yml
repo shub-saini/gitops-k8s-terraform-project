@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitopsprojectdb
+  labels:
+    app: gitopsprojectdb
+spec:
+  selector:
+    matchLabels:
+      app: gitopsprojectdb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gitopsprojectdb
+    spec:
+      containers:
+        - name: gitopsprojectdb
+          image: gitopsprojectfile/gitopsprojectfiledb
+          ports:
+            - name: gitopsprojectdb-port
+              containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: db-pass
+#        env:
+#         - name: MYSQL_ROOT_PASSWORD
+#           value: "gitopsprojectdbpass"

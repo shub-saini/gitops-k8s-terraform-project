@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitopsprojectmq01
+  labels:
+    app: gitopsprojectmq01
+spec:
+  selector:
+    matchLabels:
+      app: gitopsprojectmq01
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gitopsprojectmq01
+    spec:
+      containers:
+        - name: gitopsprojectmq01
+          image: rabbitmq
+          ports:
+            - name: gitopsprojectmq01-port
+              containerPort: 15672
+          env:
+            - name: RABBITMQ_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: rmq-pass
+            - name: RABBITMQ_DEFAULT_USER
+              value: 'guest'

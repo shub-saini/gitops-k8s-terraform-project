@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitopsprojectmq01
+spec:
+  ports:
+    - port: 5672
+      targetPort: gitopsprojectmq01-port
+      protocol: TCP
+  selector:
+    app: gitopsprojectmq01
+  type: ClusterIP
