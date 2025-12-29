@@ -1,0 +1,103 @@
+.terraform/
+############################
+# ===== Maven / Java ===== #
+############################
+
+# Maven target directory
+target/
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# Compiled class files
+*.class
+
+# Logs
+*.log
+
+# JVM crash logs
+hs_err_pid*
+
+
+############################
+# ===== Terraform ======== #
+############################
+
+# Local terraform directories
+.terraform/
+**/.terraform/*
+
+# Terraform state files (NEVER COMMIT)
+*.tfstate
+*.tfstate.*
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# Terraform variable files (often secrets)
+*.tfvars
+*.tfvars.json
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform lock file (OPTIONAL)
+# Commit this if you want provider version consistency
+# .terraform.lock.hcl
+
+
+############################
+# ===== IDEs ============ #
+############################
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+!.vscode/extensions.json
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+
+############################
+# ===== OS ============== #
+############################
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+desktop.ini
+
+
+############################
+# ===== Misc ============ #
+############################
+
+# Environment variables
+.env
+.env.*
+
+# Secrets
+secrets/
+*.pem
+*.key
+*.crt
+
+# Node (if frontend sneaks in)
+node_modules/
