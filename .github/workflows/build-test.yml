@@ -1,4 +1,4 @@
-name: vprofile actions
+name: Build and Test Code
 on: workflow_dispatch
 env:
     AWS_REGION: us-east-2
